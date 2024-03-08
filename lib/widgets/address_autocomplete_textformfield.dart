@@ -94,6 +94,12 @@ class AddressAutocompleteTextFormField
   @override
   final String? language;
 
+  ///You can restrict results from a Place Autocomplete request to be of a certain
+  ///type by passing the types parameter. This parameter specifies a type or a type
+  ///collection, as listed in Place Types. If nothing is specified, all types are returned.
+  @override
+  final List<String>? types;
+
   ///PostalCode lookup instead of address lookup (defaults to false)
   @override
   final bool postalCodeLookup;
@@ -235,6 +241,7 @@ class AddressAutocompleteTextFormField
     this.postalCodeLookup = false,
     this.componentCountry,
     this.language,
+    this.types,
 
     // arg passthroughs to TextFormField - same defaults as TextFormField
     this.initialValue,

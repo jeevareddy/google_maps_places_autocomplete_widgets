@@ -94,6 +94,12 @@ class AddressAutocompleteTextField extends AddresssAutocompleteStatefulWidget {
   @override
   final String? language;
 
+  ///You can restrict results from a Place Autocomplete request to be of a certain 
+  ///type by passing the types parameter. This parameter specifies a type or a type 
+  ///collection, as listed in Place Types. If nothing is specified, all types are returned.
+  @override
+  final List<String>? types;
+
   ///PostalCode lookup instead of address lookup (defaults to false)
   @override
   final bool postalCodeLookup;
@@ -190,6 +196,7 @@ class AddressAutocompleteTextField extends AddresssAutocompleteStatefulWidget {
     this.debounceTime = 600,
     this.componentCountry,
     this.language,
+    this.types,
 
     // inherited TextField arguments
     this.keyboardType,

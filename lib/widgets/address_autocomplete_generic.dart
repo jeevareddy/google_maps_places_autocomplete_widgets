@@ -72,6 +72,11 @@ abstract class AddresssAutocompleteStatefulWidget extends StatefulWidget {
   ///Inform Google places of desired language the results should be returned.
   abstract final String? language;
 
+  ///You can restrict results from a Place Autocomplete request to be of a certain 
+  ///type by passing the types parameter. This parameter specifies a type or a type 
+  ///collection, as listed in Place Types. If nothing is specified, all types are returned.
+  abstract final List<String>? types;
+
   ///PostalCode lookup instead of address lookup (defaults to false)
   abstract final bool postalCodeLookup;
 
@@ -127,7 +132,7 @@ mixin SuggestionOverlayMixin<T extends AddresssAutocompleteStatefulWidget>
     focusNode = widget.focusNode ?? FocusNode();
 
     addressService = AddressService(sessionToken, widget.mapsApiKey,
-        widget.componentCountry, widget.language);
+        widget.componentCountry, widget.language, types: widget.types);
 
     focusNode.addListener(showOrHideOverlayOnFocusChange);
   }

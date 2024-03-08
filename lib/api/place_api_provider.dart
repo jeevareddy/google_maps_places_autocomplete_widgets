@@ -30,12 +30,13 @@ class PlaceApiProvider {
   final client = Client();
 
   PlaceApiProvider(
-      this.sessionToken, this.mapsApiKey, this.compomentCountry, this.language);
+      this.sessionToken, this.mapsApiKey, this.compomentCountry, this.language, {this.types});
 
   final String sessionToken;
   final String mapsApiKey;
   final String? compomentCountry;
   final String? language;
+  final List<String>? types;
 
 /* Example JSON returned from Places autocomplete suggestions API request
     (ie.
@@ -121,6 +122,12 @@ result["predictions"] =
       parameters
           .addAll(<String, dynamic>{'components': 'country:$compomentCountry'});
     }
+    if (types != null) {
+      parameters
+          .addAll(<String, dynamic>{'types': types});
+    }
+
+    debugPrint(parameters.toString());
 
     final Uri request = Uri(
         scheme: 'https',

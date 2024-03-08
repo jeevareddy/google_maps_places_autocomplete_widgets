@@ -3,16 +3,19 @@ import '/model/place.dart';
 import '/model/suggestion.dart';
 
 class AddressService {
-  AddressService(this.sessionToken, this.mapsApiKey, this.componentCountry,
-      this.language) {
-    apiClient =
-        PlaceApiProvider(sessionToken, mapsApiKey, componentCountry, language);
+  AddressService(
+      this.sessionToken, this.mapsApiKey, this.componentCountry, this.language,
+      {this.types}) {
+    apiClient = PlaceApiProvider(
+        sessionToken, mapsApiKey, componentCountry, language,
+        types: types);
   }
 
   final String sessionToken;
   final String mapsApiKey;
   final String? componentCountry;
   final String? language;
+  final List<String>? types;
   late PlaceApiProvider apiClient;
 
   Future<List<Suggestion>> search(String query,
